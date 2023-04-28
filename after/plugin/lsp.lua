@@ -1,4 +1,8 @@
-local lsp = require("lsp-zero")
+local lsp = require('lsp-zero').preset({
+    manage_nvim_cmp = {
+        set_sources = 'recommended'
+    }
+})
 
 lsp.preset("recommended")
 
@@ -10,23 +14,31 @@ lsp.ensure_installed({
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
-
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ["<C-Space>"] = cmp.mapping.complete(),
+})
+
+-- preselect first item
+cmp.setup({
+    preselect = 'item',
+    completion = {
+        completeopt = 'menu,menuone,noinsert'
+    },
+    mapping = cmp_mappings
 })
 
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
-lsp.setup_nvim_cmp({
-    mapping = cmp_mappings
-})
-
+-- lsp.setup_nvim_cmp({
+--     mapping = cmp_mappings
+-- })
+-- 
 lsp.set_preferences({
     suggest_lsp_servers = false,
     sign_icons = {
@@ -37,10 +49,10 @@ lsp.set_preferences({
     }
 })
 
-local function allow_format(servers)
-    return function(client) return vim.tbl_contains(servers, client.name) end
-end
-
+-- local function allow_format(servers)
+--     return function(client) return vim.tbl_contains(servers, client.name) end
+-- end
+-- 
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
