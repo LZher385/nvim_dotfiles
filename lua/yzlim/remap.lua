@@ -23,13 +23,18 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tms<CR>")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tms switch<CR>")
-
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+vim.keymap.set("n", "<C-q>", "<C-w>q")
 
 vim.keymap.set("n", "<leader>]", "<C-i>")
 vim.keymap.set("n", "<leader>[", "<C-o>")
+
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
+
+
+vim.keymap.set("n", "<C-Right>", [[<cmd>vertical resize +5<cr>]])
+vim.keymap.set("n", "<C-Left>", [[<cmd>vertical resize -5<cr>]])
+vim.keymap.set("n", "<C-Down>", [[<cmd>horizontal resize +5<cr>]])
+vim.keymap.set("n", "<C-Up>", [[<cmd>horizontal resize -5<cr>]])

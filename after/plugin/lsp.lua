@@ -1,14 +1,22 @@
-local lsp = require('lsp-zero').preset({
-    manage_nvim_cmp = {
-        set_sources = 'recommended'
+local lsp = require('lsp-zero')
+lsp.preset('recommended')
+
+require('lsp-zero').extend_lspconfig()
+
+-- Call the language servers you have installed
+require('lspconfig').tsserver.setup({})
+require('lspconfig').eslint.setup({})
+require('lspconfig').rust_analyzer.setup({})
+
+require('mason').setup()
+require('mason-lspconfig').setup()
+require('mason-lspconfig').setup({
+    ensure_installed = {
+        -- Replace these with the servers you want to install
+        'rust_analyzer',
+        'tsserver',
+        'eslint',
     }
-})
-
-lsp.preset("recommended")
-
-lsp.ensure_installed({
-    'tsserver',
-    'rust_analyzer',
 })
 
 -- Fix Undefined global 'vim'
@@ -38,7 +46,7 @@ cmp_mappings['<S-Tab>'] = nil
 -- lsp.setup_nvim_cmp({
 --     mapping = cmp_mappings
 -- })
--- 
+--
 lsp.set_preferences({
     suggest_lsp_servers = false,
     sign_icons = {
@@ -52,7 +60,7 @@ lsp.set_preferences({
 -- local function allow_format(servers)
 --     return function(client) return vim.tbl_contains(servers, client.name) end
 -- end
--- 
+--
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
