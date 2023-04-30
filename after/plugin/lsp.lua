@@ -43,10 +43,6 @@ cmp.setup({
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
--- lsp.setup_nvim_cmp({
---     mapping = cmp_mappings
--- })
---
 lsp.set_preferences({
     suggest_lsp_servers = false,
     sign_icons = {
@@ -57,10 +53,6 @@ lsp.set_preferences({
     }
 })
 
--- local function allow_format(servers)
---     return function(client) return vim.tbl_contains(servers, client.name) end
--- end
---
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
