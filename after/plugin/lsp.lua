@@ -10,7 +10,7 @@ require("lspconfig").tsserver.setup({
     end,
 })
 require('lspconfig').eslint.setup({})
-require('lspconfig').rust_analyzer.setup({})
+--require('lspconfig').rust_analyzer.setup({})
 
 require('mason').setup()
 require('mason-lspconfig').setup()
@@ -20,6 +20,7 @@ require('mason-lspconfig').setup({
         'rust_analyzer',
         'tsserver',
         'eslint',
+        'rustfmt'
     }
 })
 
@@ -56,6 +57,11 @@ lsp.set_preferences({
         info = 'I'
     }
 })
+
+-- rust tools
+local rt = require("rust-tools")
+
+rt.setup({})
 
 --lsp.on_attach(function(client, bufnr)
 --local opts = { buffer = bufnr, remap = false }
