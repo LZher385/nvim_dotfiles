@@ -44,6 +44,8 @@ return require('packer').startup(function(use)
             { 'L3MON4D3/LuaSnip' },     -- Required
         }
     }
+    use "glepnir/lspsaga.nvim"
+
     use('jose-elias-alvarez/null-ls.nvim')
     use('MunifTanjim/prettier.nvim')
 
@@ -77,4 +79,8 @@ return require('packer').startup(function(use)
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
     }
+    use "windwp/nvim-ts-autotag"
+
+    use "lewis6991/gitsigns.nvim"
+    use "f-person/git-blame.nvim"
 end)

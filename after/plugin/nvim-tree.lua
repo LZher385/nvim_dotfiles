@@ -7,13 +7,14 @@ vim.opt.termguicolors = true
 
 -- OR setup with some options
 require("nvim-tree").setup({
-  sort_by = "case_sensitive",
-  renderer = {
-    group_empty = true,
-  },
-  filters = {
-    dotfiles = true,
-  },
+    sort_by = "case_sensitive",
+    renderer = {
+        group_empty = true,
+    },
+    filters = {
+        dotfiles = true,
+    },
 })
 
 vim.keymap.set("n", "<leader>wt", vim.cmd.NvimTreeToggle)
+vim.keymap.set("n", "<leader>wf", vim.cmd.NvimTreeFindFile)
