@@ -6,23 +6,19 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
-
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
-        -- or                            , branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
-
+    use "nvim-lua/plenary.nvim"
+    --use {
+    --    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    --    -- or                            , branch = '0.1.x',
+    --    requires = { { 'nvim-lua/plenary.nvim' } }
+    --}
     use 'folke/tokyonight.nvim'
-
     use { "catppuccin/nvim", as = "catppuccin" }
-
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/playground')
     use('theprimeagen/harpoon')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
-
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -33,6 +29,7 @@ return require('packer').startup(function(use)
                 -- Optional
                 'williamboman/mason.nvim',
                 run = function()
+                    ---@diagnostic disable-next-line: param-type-mismatch
                     pcall(vim.cmd, 'MasonUpdate')
                 end,
             },
@@ -44,21 +41,9 @@ return require('packer').startup(function(use)
             { 'L3MON4D3/LuaSnip' },     -- Required
         }
     }
-    use "glepnir/lspsaga.nvim"
-
+    --use "glepnir/lspsaga.nvim"
     use('jose-elias-alvarez/null-ls.nvim')
     use('MunifTanjim/prettier.nvim')
-
-    use {
-        'nvim-tree/nvim-tree.lua',
-        requires = {
-            'nvim-tree/nvim-web-devicons', -- optional
-        },
-        config = function()
-            require("nvim-tree").setup {}
-        end
-    }
-
     use {
         "hrsh7th/nvim-cmp",
         requires = {
@@ -80,9 +65,17 @@ return require('packer').startup(function(use)
         config = function() require("nvim-autopairs").setup {} end
     }
     use "windwp/nvim-ts-autotag"
-
     use "lewis6991/gitsigns.nvim"
     use "f-person/git-blame.nvim"
-
-    use 'simrat39/rust-tools.nvim'
+    use "simrat39/rust-tools.nvim"
+    use {
+        "nvim-lualine/lualine.nvim",
+        requires = { "nvim-tree/nvim-web-devicons", opt = true }
+    }
+    use "ggandor/lightspeed.nvim"
+    use { "ibhagwan/fzf-lua",
+        -- optional for icon support
+        requires = { "nvim-tree/nvim-web-devicons" }
+    }
+    use { 'ms-jpq/chadtree', branch = 'chad', run = 'python3 -m chadtree deps' }
 end)

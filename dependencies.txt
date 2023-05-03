@@ -1,0 +1,5 @@
+https://github.com/junegunn/fzf
+https://formulae.brew.sh/formula/tree-sitter
+https://formulae.brew.sh/formula/bat#default
+https://github.com/BurntSushi/ripgrep
+https://github.com/sharkdp/fd
