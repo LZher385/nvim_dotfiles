@@ -12,4 +12,6 @@ vim.keymap.set("n", "gr", "<cmd>lua require('fzf-lua').lsp_references()<CR>", { 
 vim.keymap.set("n", "gd", "<cmd>lua require('fzf-lua').lsp_definitions()<CR>", { silent = true })
 vim.keymap.set("n", "gi", "<cmd>lua require('fzf-lua').lsp_implementations()<CR>", { silent = true })
 vim.keymap.set("n", "gD", "<cmd>lua require('fzf-lua').lsp_declarations()<CR>", { silent = true })
-vim.keymap.set("n", "/", "<cmd>lua require('fzf-lua').lgrep_curbuf()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>/", "<cmd>lua require('fzf-lua').lgrep_curbuf()<CR>", { silent = true })
+
+vim.keymap.set("n", "g?", "<cmd>lua require('fzf-lua').keymaps()<CR>", { silent = true })

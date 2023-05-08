@@ -77,5 +77,41 @@ return require('packer').startup(function(use)
         -- optional for icon support
         requires = { "nvim-tree/nvim-web-devicons" }
     }
-    use { 'ms-jpq/chadtree', branch = 'chad', run = 'python3 -m chadtree deps' }
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional
+        },
+        config = function()
+            require("nvim-tree").setup {}
+        end
+    }
+
+
+    use({
+        "jackMort/ChatGPT.nvim",
+        config = function()
+            require("chatgpt").setup()
+        end,
+        requires = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim"
+        }
+    })
+    use({
+        "epwalsh/obsidian.nvim",
+        config = function()
+            require("obsidian").setup({
+                dir = "~/obsidian/Main",
+                daily_notes = {
+                    folder = "Daily",
+                },
+                notes_subdir = "Vault",
+                completion = {
+                    nvim_cmp = true,
+                },
+            })
+        end,
+    })
 end)
