@@ -86,19 +86,15 @@ return require('packer').startup(function(use)
             require("nvim-tree").setup {}
         end
     }
-
-
     use({
         "jackMort/ChatGPT.nvim",
-        config = function()
-            require("chatgpt").setup()
-        end,
         requires = {
             "MunifTanjim/nui.nvim",
             "nvim-lua/plenary.nvim",
             "nvim-telescope/telescope.nvim"
         }
     })
+
     use({
         "epwalsh/obsidian.nvim",
         config = function()
